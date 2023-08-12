@@ -4,7 +4,8 @@
 ```c++
 #include <WiFi.h>
  
-void setup(){
+void setup()
+{
   Serial.begin(115200);
   WiFi.mode(WIFI_MODE_STA);
   Serial.println(WiFi.macAddress());
@@ -76,7 +77,8 @@ void setup()
   }
 }
 
-void loop() {
+void loop()
+{
   //Establece valores para enviar
   strcpy(myData.a, "THIS IS A CHAR");
   myData.b = random(1, 20);
@@ -157,4 +159,3 @@ void loop()
 
 }
 ```
-### A0:B7:65:4A:8F:C4 DEL CABLE BLANCO
