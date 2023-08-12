@@ -20,11 +20,11 @@ void loop(){
 #include <esp_now.h>
 #include <WiFi.h>
 
-// REPLACE WITH YOUR RECEIVER MAC Address
-uint8_t broadcastAddress[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+//Remplazar con la direccion MAC del dispositivo receptor
+uint8_t broadcastAddress[] = {0xA0, 0xB7, 0x65, 0x4A, 0x8F, 0xC4};
 
-// Structure example to send data
-// Must match the receiver structure
+//Ejemplo de estructura para enviar datos
+//Debe coincidir con la estructura del receptor
 typedef struct struct_message {
   char a[32];
   int b;
@@ -32,60 +32,67 @@ typedef struct struct_message {
   bool d;
 } struct_message;
 
-// Create a struct_message called myData
+//Crea un struct_message llamado myData
 struct_message myData;
 
 esp_now_peer_info_t peerInfo;
 
-// callback when data is sent
-void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
+//devolucion de llamada cuando se envían datos
+void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status)
+{
   Serial.print("\r\nLast Packet Send Status:\t");
   Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail");
 }
- 
-void setup() {
-  // Init Serial Monitor
+
+void setup()
+{
+  //Inicializa el puerto serial
   Serial.begin(115200);
- 
-  // Set device as a Wi-Fi Station
+
+  //Establece el dispositovo como Wi-Fi modo estacion
   WiFi.mode(WIFI_STA);
 
-  // Init ESP-NOW
-  if (esp_now_init() != ESP_OK) {
+  //Inicializa ESP-NOW
+  if (esp_now_init() != ESP_OK) 
+  {
     Serial.println("Error initializing ESP-NOW");
     return;
   }
 
-  // Once ESPNow is successfully Init, we will register for Send CB to
-  // get the status of Trasnmitted packet
+  //Una vez que ESPNow se inicie con éxito, nos registraremos para Enviar CB a
+  //obtener el estado del paquete transmitido
   esp_now_register_send_cb(OnDataSent);
-  
-  // Register peer
+
+  //Registrar peer
   memcpy(peerInfo.peer_addr, broadcastAddress, 6);
-  peerInfo.channel = 0;  
+  peerInfo.channel = 0;
   peerInfo.encrypt = false;
-  
-  // Add peer        
-  if (esp_now_add_peer(&peerInfo) != ESP_OK){
+
+  //Agregar peer
+  if (esp_now_add_peer(&peerInfo) != ESP_OK) 
+  {
     Serial.println("Failed to add peer");
     return;
   }
 }
- 
+
 void loop() {
-  // Set values to send
+  //Establece valores para enviar
   strcpy(myData.a, "THIS IS A CHAR");
-  myData.b = random(1,20);
+  myData.b = random(1, 20);
   myData.c = 1.2;
   myData.d = false;
-  
-  // Send message via ESP-NOW
+
+  //Envia mensaje mediante ESP-NOW
   esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData));
-   
-  if (result == ESP_OK) {
+
+  if (result == ESP_OK) 
+  {
     Serial.println("Sent with success");
   }
-  else {
+  
+  else 
+  {
     Serial.println("Error sending the data");
   }
   delay(2000);
