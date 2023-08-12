@@ -108,6 +108,9 @@ void loop()
 }
 ```
 ### Receptor
+<img src="https://github.com/IDiegoUlises/Esp32-Now/blob/main/Imagenes/IMG_20230811_231621.jpg" />
+
+### Codigo
 ```c++
 #include <esp_now.h>
 #include <WiFi.h>
