@@ -146,3 +146,4 @@ void loop() {
 
 }
 ```
+### A0:B7:65:4A:8F:C4 DEL CABLE BLANCO
