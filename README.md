@@ -96,20 +96,21 @@ void loop() {
 #include <esp_now.h>
 #include <WiFi.h>
 
-// Structure example to receive data
-// Must match the sender structure
+//Estructura para recibir datos
+//Debe coincidir con la estructura del remitente
 typedef struct struct_message {
-    char a[32];
-    int b;
-    float c;
-    bool d;
+  char a[32];
+  int b;
+  float c;
+  bool d;
 } struct_message;
 
-// Create a struct_message called myData
+//Crea un struct_message llamado myData
 struct_message myData;
 
-// callback function that will be executed when data is received
-void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) {
+//funcion de devolucion de llamada que se ejecutara cuando se reciban los datos
+void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len)
+{
   memcpy(&myData, incomingData, sizeof(myData));
   Serial.print("Bytes received: ");
   Serial.println(len);
@@ -123,26 +124,29 @@ void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) {
   Serial.println(myData.d);
   Serial.println();
 }
- 
-void setup() {
-  // Initialize Serial Monitor
+
+void setup() 
+{
+  //Inicializa el puerto serial
   Serial.begin(115200);
-  
-  // Set device as a Wi-Fi Station
+
+  //Establece el dispositivo como modo Wi-Fi estacion
   WiFi.mode(WIFI_STA);
 
-  // Init ESP-NOW
-  if (esp_now_init() != ESP_OK) {
+  //Inicializa ESP-NOW
+  if (esp_now_init() != ESP_OK) 
+  {
     Serial.println("Error initializing ESP-NOW");
     return;
   }
-  
-  // Once ESPNow is successfully Init, we will register for recv CB to
-  // get recv packer info
+
+  //Una vez que ESPNow se inicie con éxito, nos registraremos para recv CB para
+  //obtener información del empaquetador recv
   esp_now_register_recv_cb(OnDataRecv);
 }
- 
-void loop() {
+
+void loop() 
+{
 
 }
 ```
