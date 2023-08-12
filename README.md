@@ -1,6 +1,6 @@
 # Esp32-Now
 
-### Codigo para obtener direccion mac wifi
+### Codigo para obtener direccion Mac Wi-Fi
 ```c++
 #include <WiFi.h>
  
@@ -11,7 +11,8 @@ void setup()
   Serial.println(WiFi.macAddress());
 }
  
-void loop(){
+void loop()
+{
 
 }
 ```
