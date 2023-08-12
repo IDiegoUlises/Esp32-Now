@@ -169,3 +169,5 @@ void loop()
 
 }
 ```
+### Debug de datos recibidos
+<img src="https://github.com/IDiegoUlises/Esp32-Now/blob/main/Imagenes/datos.jpg" />
