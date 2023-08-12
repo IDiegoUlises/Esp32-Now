@@ -17,6 +17,8 @@ void loop()
 }
 ```
 
+<img src="https://github.com/IDiegoUlises/Esp32-Now/blob/main/Imagenes/mac.jpg" />
+
 ### Emisor
 ```c++
 #include <esp_now.h>
