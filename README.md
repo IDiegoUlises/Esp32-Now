@@ -20,6 +20,9 @@ void loop()
 <img src="https://github.com/IDiegoUlises/Esp32-Now/blob/main/Imagenes/mac.jpg" />
 
 ### Emisor
+
+<img src="https://github.com/IDiegoUlises/Esp32-Now/blob/main/Imagenes/IMG_20230811_231508.jpg" />
+
 ```c++
 #include <esp_now.h>
 #include <WiFi.h>
