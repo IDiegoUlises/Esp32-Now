@@ -172,4 +172,6 @@ void loop()
 ### Debug de datos recibidos
 <img src="https://github.com/IDiegoUlises/Esp32-Now/blob/main/Imagenes/datos.jpg" />
 
-* AGREGAR QUE ES UN PROTOCOLO DE COMUNICACION PROPIO CREADO POR LA MISMA EMPRESA QUE FABRICA EL ESP32 Y QUE ES PARA ENVIAR POCOS DATOS(INCLUIR LA CANTIDAD EXACTA DE DATOS QUE SE PUEDEN ENVIAR)
+* Solo se puede enviar 250 bytes
+* El numero maximo de clientes que se puede conectar es de 20 dispositivos sin encriptacion
+* El numero maximo de clientes con encriptacion es de 10 clientes
