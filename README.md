@@ -172,6 +172,6 @@ void loop()
 ### Debug de datos recibidos
 <img src="https://github.com/IDiegoUlises/Esp32-Now/blob/main/Imagenes/datos.jpg" />
 
-* Solo se puede enviar 250 bytes
+* Solo se pueden enviar 250 bytes
 * El numero maximo de clientes que se puede conectar es de 20 dispositivos sin encriptacion
-* El numero maximo de clientes con encriptacion es de 10 clientes
+* El numero maximo de clientes con encriptacion es de 10 dispositivos
